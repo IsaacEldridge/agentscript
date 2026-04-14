@@ -27,6 +27,7 @@ import {
   SpreadExpression,
   NoneLiteral,
   decomposeAtMemberExpression,
+  escapeStringValue,
 } from '@agentscript/language';
 import type { CompilerContext } from '../compiler-context.js';
 
@@ -94,9 +95,7 @@ function compileExprNode(
     return compileCallExpression(expr, ctx, opts);
   }
   if (expr instanceof StringLiteral) {
-    // Escape double quotes in the string value and wrap in double quotes to match agent-dsl
-    const escaped = expr.value.replace(/"/g, '\\"');
-    return `"${escaped}"`;
+    return `"${escapeStringValue(expr.value)}"`;
   }
   if (expr instanceof NumberLiteral) {
     return String(expr.value);
