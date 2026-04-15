@@ -33,7 +33,6 @@ export function resolveActionType(name: string, def: ParsedTool): ActionType {
         if (utilName === 'transition') return 'transition';
         if (utilName === 'setVariables') return 'setVariables';
         if (utilName === 'escalate') return 'escalate';
-        if (utilName === 'supervise') return 'supervise';
       }
       // @topic.XXX and @subagent.XXX references are supervision actions
       if (
@@ -55,9 +54,6 @@ export function resolveActionType(name: string, def: ParsedTool): ActionType {
   }
   if (name.startsWith('@utils.escalate') || name === 'escalate') {
     return 'escalate';
-  }
-  if (name.startsWith('@utils.supervise') || name === 'supervise') {
-    return 'supervise';
   }
 
   return 'tool';
