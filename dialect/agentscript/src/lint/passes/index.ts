@@ -16,6 +16,7 @@ import {
   positionIndexPass,
   unreachableCodePass,
   emptyBlockPass,
+  unusedVariablePass,
   expressionValidationPass,
   spreadContextPass,
 } from '@agentscript/language';
@@ -57,6 +58,7 @@ export function defaultRules(): LintPass[] {
     positionIndexPass(),
     unreachableCodePass(),
     emptyBlockPass(),
+    unusedVariablePass(),
     expressionValidationPass(),
     spreadContextPass(),
     // AgentScript analyzers
